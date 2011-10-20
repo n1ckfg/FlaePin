@@ -6,13 +6,13 @@ int sW = 640;
 int sH = 480;
 int fps = 24;
 
-proxml.XMLElement Motion;
+proxml.XMLElement MotionCapture;
 XMLInOut xmlIO;
 boolean loaded = false;
 
 String[] oscNames = {
   //~~~   complete list of working joints, check updates at https://github.com/Sensebloom/OSCeleton  ~~~
-  "head","neck","torso","r_shoulder","r_elbow","r_hand","l_shoulder","l_elbow","l_hand","r_hip","r_knee","r_ankle","r_foot","l_hip","l_knee","l_ankle","l_foot"
+"head","neck","torso","r_shoulder","r_elbow","r_hand","l_shoulder","l_elbow","l_hand","r_hip","r_knee","r_foot","l_hip","l_knee","l_foot"
   //~~~
   //"head","r_shoulder","r_elbow","r_hand","l_shoulder","l_elbow","l_hand"
 };
@@ -55,7 +55,7 @@ void xmlInit() {
 
 void xmlEvent(proxml.XMLElement element) {
   //this function is ccalled by default when an XML object is loaded
-  Motion = element;
+  MotionCapture = element;
   //parseXML(); //appelle la fonction qui analyse le fichier XML
   loaded = true;
   xmlFirstRun();
@@ -72,10 +72,10 @@ void draw() {
     data.add("\r");
     data.add("Effects" + "\t" + "Puppet #2" + "\t" + "arap #3" + "\t" + "Mesh" + "\t" + "Mesh #1" + "\t" + "Deform" + "\t" + "Pin #" + pinNums[j] + "\t" + "Position");
     data.add("\t" + "Frame" + "\t" + "X pixels" + "\t" + "Y pixels");
-    for(int i=0;i<Motion.countChildren();i++) { 
+    for(int i=0;i<MotionCapture.countChildren();i++) { 
       data.add("\t" + i  
-      + "\t" + (sW * float(Motion.getChild(i).getChild(0).getChild(0).getChild(j).getAttribute("x")))
-      + "\t" + (sH * float(Motion.getChild(i).getChild(0).getChild(0).getChild(j).getAttribute("y")))); //gets to the child we need //gets to the child we need
+      + "\t" + (sW * float(MotionCapture.getChild(i).getChild(0).getChild(0).getChild(j).getAttribute("x")))
+      + "\t" + (sH * float(MotionCapture.getChild(i).getChild(0).getChild(0).getChild(j).getAttribute("y")))); //gets to the child we need //gets to the child we need
     }
     }
 
