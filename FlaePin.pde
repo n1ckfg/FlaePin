@@ -6,7 +6,7 @@ int sW = 640;
 int sH = 480;
 int fps = 24;
 
-proxml.XMLElement motion;
+proxml.XMLElement Motion;
 XMLInOut xmlIO;
 boolean loaded = false;
 
@@ -55,7 +55,7 @@ void xmlInit() {
 
 void xmlEvent(proxml.XMLElement element) {
   //this function is ccalled by default when an XML object is loaded
-  motion = element;
+  Motion = element;
   //parseXML(); //appelle la fonction qui analyse le fichier XML
   loaded = true;
   xmlFirstRun();
@@ -72,10 +72,10 @@ void draw() {
     data.add("\r");
     data.add("Effects" + "\t" + "Puppet #2" + "\t" + "arap #3" + "\t" + "Mesh" + "\t" + "Mesh #1" + "\t" + "Deform" + "\t" + "Pin #" + pinNums[j] + "\t" + "Position");
     data.add("\t" + "Frame" + "\t" + "X pixels" + "\t" + "Y pixels");
-    for(int i=0;i<motion.countChildren();i++) { 
+    for(int i=0;i<Motion.countChildren();i++) { 
       data.add("\t" + i  
-      + "\t" + (sW * float(motion.getChild(i).getChild(0).getChild(0).getChild(j).getAttribute("x")))
-      + "\t" + (sH * float(motion.getChild(i).getChild(0).getChild(0).getChild(j).getAttribute("y")))); //gets to the child we need //gets to the child we need
+      + "\t" + (sW * float(Motion.getChild(i).getChild(0).getChild(0).getChild(j).getAttribute("x")))
+      + "\t" + (sH * float(Motion.getChild(i).getChild(0).getChild(0).getChild(j).getAttribute("y")))); //gets to the child we need //gets to the child we need
     }
     }
 
